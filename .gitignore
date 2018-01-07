@@ -1,0 +1,9 @@
+/* No OATH */
+config.json
+
+/* folders */
+dist/*
+node_modules/*
+
+/* no log files */
+*.log

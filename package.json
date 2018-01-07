@@ -1,0 +1,37 @@
+{
+  "name": "path-bot",
+  "version": "1.0.0",
+  "description": "My Pathfinder Bot",
+  "main": "dist/bot.js",
+  "author": "Elliot Brown",
+  "scripts": {
+    "start": "nodemon lib/bot.js --exec babel-node",
+    "build": "babel lib -d dist",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "dependencies": {
+    "babel-polyfill": "^6.26.0",
+    "discord.js": "^11.2.1",
+    "seedrandom": "^2.4.3",
+    "winston": "^2.4.0"
+  },
+  "devDependencies": {
+    "babel-cli": "^6.26.0",
+    "babel-core": "^6.26.0",
+    "babel-plugin-transform-async-to-generator": "^6.24.1",
+    "babel-plugin-transform-regenerator": "^6.26.0",
+    "babel-preset-es2015": "^6.24.1",
+    "babel-preset-stage-2": "^6.24.1",
+    "babel-register": "^6.26.0",
+    "chai": "^4.1.2",
+    "cucumber": "^3.0.1",
+    "eslint": "^4.6.1",
+    "eslint-config-airbnb-base": "^12.0.0",
+    "eslint-html-reporter": "^0.5.2",
+    "eslint-plugin-import": "^2.7.0",
+    "eslint-plugin-mocha": "^4.11.0",
+    "mocha": "^3.5.0",
+    "nodemon": "^1.12.0",
+    "nyc": "^11.1.0"
+  }
+}
