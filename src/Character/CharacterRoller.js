@@ -9,7 +9,7 @@ logger.add(logger.transports.Console, {
 });
 logger.level = 'debug';
 
-class CharacterRoller { 
+class CharacterRoller {
   constructor(characterName) {
     this.characterName = characterName;
     this.Character = new Character(this.characterName);
@@ -17,31 +17,32 @@ class CharacterRoller {
   }
 
   rollCharacter(actionData) {
-    logger.debug(`actionData: ${actionData}`);
     const skillResult = {};
     const charSkills = this.characterData.skills;
-    logger.debug(`I found these skills: ${JSON.stringify(charSkills)}`);
 
-    const [mainskill, subskill] = actionData.toString().toLowerCase().split('.');
-    const [skill, skillTwo] = actionData.toString().toLowerCase().split(',');
-    logger.debug(`skill: ${skill}`);
-    skillResult.skillName = skill;
+    const [skillString, skillMod] = actionData.toString().toLowerCase().split('+');
+    const [mainskill, subskill] = skillString.split('.');
+    const [skill, skillTwo] = skillString.split(',');
     let rollSkill = skill;
-    if (subskill) {
-      logger.debug(`mainskill: ${mainskill}, subskill: ${subskill}`);
-      skillResult.modifier = charSkills[mainskill][subskill];
-      skillResult.rollString = `1d20+${skillResult.modifier}`;
-    } else {
-      if (skillTwo) {
-        rollSkill += ` ${skillTwo}`;
-      }
-      logger.debug(`actionData: ${actionData}`);
-      logger.debug(`roll: ${rollSkill}`);
-      skillResult.modifier = charSkills[rollSkill];
-      skillResult.rollString = `1d20+${skillResult.modifier}`;
-      logger.debug(`rollString: ${skillResult.rollString}`);
+    if (skillTwo) {
+      rollSkill += ` ${skillTwo}`;
     }
-    logger.debug(`skillResult: ${JSON.stringify(skillResult)}`);
+    skillResult.skillName = rollSkill;
+
+    if (subskill) {
+      skillResult.modifier = charSkills[mainskill][subskill];
+    } else {
+      skillResult.modifier = charSkills[rollSkill];
+    }
+
+    if (skillResult.modifier === undefined) {
+      throw new Error(`skill [${skillResult.skillName}] not found!`);
+    } else {
+      if (skillMod) {
+        skillResult.modifier = (+skillResult.modifier) + (+skillMod);
+      }
+      skillResult.rollString = `1d20+${skillResult.modifier}`;
+    }
     return skillResult;
   }
 }

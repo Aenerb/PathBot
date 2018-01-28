@@ -82,7 +82,6 @@ class CharacterReporter {
 
     const [mainskill, subskill] = actionData.toString().toLowerCase().split('.');
     const [skill, skillTwo] = actionData.toString().toLowerCase().split(',');
-    skillResult.skillName = skill;
     let rollSkill = skill;
     if (subskill) {
       skillResult.modifier = charSkills[mainskill][subskill];
@@ -91,6 +90,10 @@ class CharacterReporter {
         rollSkill += ` ${skillTwo}`;
       }
       skillResult.modifier = charSkills[rollSkill];
+    }
+    skillResult.skillName = rollSkill;
+    if (skillResult.modifier === undefined) {
+      throw new Error(`skill [${skillResult.skillName}] not found!`);
     }
     logger.debug(`skillResult: ${JSON.stringify(skillResult)}`);
     return skillResult;

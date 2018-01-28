@@ -162,6 +162,7 @@
         "planes": 0,
         "religion": 0
       },
+      "linguistics": 0,
       "perception": 17,
       "profession": {
         "architect": 0,
@@ -189,7 +190,7 @@
         "sailor": 0,
         "scribe": 0,
         "shepherd": 0,
-        "stable master": 0,
+        "stablemaster": 0,
         "soldier": 0,
         "tanner": 0,
         "trapper": 0,
@@ -197,6 +198,7 @@
       },
       "ride": 5,
       "sense motive": 3,
+      "sleight of hand": 0,
       "spellcraft": 5,
       "stealth": 15,
       "survival": 12,
