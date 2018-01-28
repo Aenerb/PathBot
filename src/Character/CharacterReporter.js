@@ -11,23 +11,23 @@ logger.level = 'debug';
 
 class CharacterReporter {
   constructor(characterName) {
-    this.characterName = characterName;
-    this.Character = new Character(this.characterName);
-    this.characterData = this.Character.characterData();
+    this.Character = new Character(characterName);
   }
 
   reportAttributes() {
+    const characterData = this.Character.characterData();
     const fullAttributes = {};
-    fullAttributes.name = this.characterData.name;
-    fullAttributes.race = this.characterData.race;
-    fullAttributes.class = this.characterData.class;
-    fullAttributes.level = this.characterData.level;
-    fullAttributes.attributemodifiers = this.characterData.attributemodifiers;
+    fullAttributes.name = characterData.name;
+    fullAttributes.race = characterData.race;
+    fullAttributes.class = characterData.class;
+    fullAttributes.level = characterData.level;
+    fullAttributes.attributemodifiers = characterData.attributemodifiers;
     return fullAttributes;
   }
 
   reportAll() {
-    const charSkills = this.characterData.skills;
+    const characterData = this.Character.characterData();
+    const charSkills = characterData.skills;
     let skillList = '';
     logger.debug(`charSkills: ${charSkills}`);
     Object.keys(charSkills).forEach((key) => {
@@ -77,7 +77,8 @@ class CharacterReporter {
   reportOne(actionData) {
     logger.debug(`actionData: ${actionData}`);
     const skillResult = {};
-    const charSkills = this.characterData.skills;
+    const characterData = this.Character.characterData();
+    const charSkills = characterData.skills;
     logger.debug(`I found these skills: ${JSON.stringify(charSkills)}`);
 
     const [mainskill, subskill] = actionData.toString().toLowerCase().split('.');
