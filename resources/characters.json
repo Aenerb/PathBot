@@ -106,13 +106,25 @@
     "race": "Half-elf",
     "class": "Ranger",
     "level": 10,
-    "attributemodifiers": {
-      "str": 5,
-      "dex": 2,
-      "con": 2,
-      "int": 0,
-      "wis": 2,
-      "cha": -1
+    "attributes": {
+      "strength" : {
+        "value": 20
+      },
+      "dexterity" : {
+        "value": 14
+      },
+      "constitution" : {
+        "value": 14
+      },
+      "intelligence" : {
+        "value": 11
+      },
+      "wisdom" : {
+        "value": 14
+      },
+      "charisma" : {
+        "value": 8
+      }
     },
     "skills": {
       "acrobatics": 5,

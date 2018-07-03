@@ -15,18 +15,18 @@ class CharacterReporter {
   }
 
   reportAttributes() {
-    const characterData = this.Character.characterData();
+    const characterData = Object.assign({}, this.Character.characterData());
     const fullAttributes = {};
     fullAttributes.name = characterData.name;
     fullAttributes.race = characterData.race;
     fullAttributes.class = characterData.class;
     fullAttributes.level = characterData.level;
-    fullAttributes.attributemodifiers = characterData.attributemodifiers;
+    fullAttributes.attributes = Object.assign({}, characterData.attributes);
     return fullAttributes;
   }
 
   reportAll() {
-    const characterData = this.Character.characterData();
+    const characterData = Object.assign({}, this.Character.characterData());
     const charSkills = characterData.skills;
     let skillList = '';
     logger.debug(`charSkills: ${charSkills}`);
@@ -77,7 +77,7 @@ class CharacterReporter {
   reportOne(actionData) {
     logger.debug(`actionData: ${actionData}`);
     const skillResult = {};
-    const characterData = this.Character.characterData();
+    const characterData = Object.assign({}, this.Character.characterData());
     const charSkills = characterData.skills;
     logger.debug(`I found these skills: ${JSON.stringify(charSkills)}`);
 
